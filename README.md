@@ -102,30 +102,30 @@ Building on Mac OS X
 
 Here's how to build it:
 
-$ /usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
-$ brew install qt
-$ brew install poppler --with-qt4
-
-# Dirs must be writeable because macdeployqt modifies copied files
-$ chmod -R u+w /usr/local/Cellar/qt/
-$ chmod -R u+w /usr/local/Cellar/poppler/
-
-$ curl -O http://www.qtrac.eu/diffpdf-1.5.0.tar.gz
-$ tar xvfz diffpdf-1.5.0.tar.gz
-$ cd diffpdf-1.5.0
-$ lrelease diffpdf.pro
-$ qmake -spec macx-g++
-$ make
+    $ /usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+    $ brew install qt
+    $ brew install poppler --with-qt4
+    
+    # Dirs must be writeable because macdeployqt modifies copied files
+    $ chmod -R u+w /usr/local/Cellar/qt/
+    $ chmod -R u+w /usr/local/Cellar/poppler/
+    
+    $ curl -O http://www.qtrac.eu/diffpdf-1.5.0.tar.gz
+    $ tar xvfz diffpdf-1.5.0.tar.gz
+    $ cd diffpdf-1.5.0
+    $ lrelease diffpdf.pro
+    $ qmake -spec macx-g++
+    $ make
 
 Here's how to make a .dmg:
 
-# Fix references, remove unneeded Frameworks and build DMG
-$ macdeployqt diffpdf.app/
-$ cd diffpdf.app/Contents/Frameworks/
-$ rm -r QtDeclarative.framework/ QtNetwork.framework/
-QtScript.framework/ QtSql.framework/ QtSvg.framework/
-QtXmlPatterns.framework/
-$ cd ../../..
-$ hdiutil create diffpdf-1.5.0.dmg -srcfolder diffpdf.app/
+    # Fix references, remove unneeded Frameworks and build DMG
+    $ macdeployqt diffpdf.app/
+    $ cd diffpdf.app/Contents/Frameworks/
+    $ rm -r QtDeclarative.framework/ QtNetwork.framework/
+    QtScript.framework/ QtSql.framework/ QtSvg.framework/
+    QtXmlPatterns.framework/
+    $ cd ../../..
+    $ hdiutil create diffpdf-1.5.0.dmg -srcfolder diffpdf.app/
 
 Thanks to Dirk Loss for this information.
